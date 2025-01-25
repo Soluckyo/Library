@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+    database: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5433/LibraryApp
+    username: postgres
+    password: postgres
