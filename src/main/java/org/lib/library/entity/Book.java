@@ -11,8 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -32,7 +32,26 @@ public class Book {
     private Library libraryId;
 
     @ManyToOne
-    private Guest guestId;
+    private Guest guest;
 
     private boolean isAvailable = true;
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+
 }

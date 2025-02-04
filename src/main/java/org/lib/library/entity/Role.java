@@ -1,5 +1,5 @@
 package org.lib.library.entity;
 
 public enum Role {
-    ADMIN, EMPLOYEE
+    ADMIN, EMPLOYEE, PENDING
 }

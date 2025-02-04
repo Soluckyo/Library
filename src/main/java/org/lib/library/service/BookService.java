@@ -3,6 +3,7 @@ package org.lib.library.service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
 import org.lib.library.entity.Book;
 import org.lib.library.entity.Guest;
 import org.lib.library.repository.BookRepo;
@@ -33,19 +34,29 @@ public class BookService {
     }
 
     public void issueBook(Long bookId, Guest guest) throws Exception {
+
+        if(guest==null) {
+            throw new Exception("Гость не может быть null");
+        }
+
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new RuntimeException("Книга не найдена"));
+
         if(!book.isAvailable()){
             throw new Exception("Эта книга уже выдана");
         }
-        book.setGuestId(guest);
+
+        book.setGuest(guest);
+        book.setAvailable(false);
 
         bookRepo.save(book);
     }
 
     public void returnBook(Long bookId) throws Exception {
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new RuntimeException("Книга не найдена"));
-
-        book.setGuestId(null);
+        if(book.isAvailable()){
+            throw new Exception("Эта книга уже сдана");
+        }
+        book.setGuest(null);
 
         bookRepo.save(book);
     }
