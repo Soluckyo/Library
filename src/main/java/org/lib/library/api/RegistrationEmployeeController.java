@@ -2,14 +2,17 @@ package org.lib.library.api;
 
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
+import org.lib.library.service.EmployeeService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/registration/")
 @AllArgsConstructor
-@NoArgsConstructor
 public class RegistrationEmployeeController {
-    private final EmployService employService;
+    private EmployeeService employeeService;
 }
+

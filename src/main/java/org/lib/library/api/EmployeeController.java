@@ -3,8 +3,10 @@ package org.lib.library.api;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.lib.library.entity.Book;
+import org.lib.library.entity.Employee;
 import org.lib.library.entity.Guest;
 import org.lib.library.service.BookService;
+import org.lib.library.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,6 +65,11 @@ public class EmployeeController {
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("allreg")
+    public String allReg() {
+        return "Hello, this page is for registed users only";
     }
 
 

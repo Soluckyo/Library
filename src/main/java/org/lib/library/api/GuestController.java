@@ -27,4 +27,9 @@ public class GuestController {
     public Book getBook(@PathVariable Long bookId) {
         return bookService.findById(bookId);
     }
+
+    @GetMapping("/all")
+    public String all(){
+        return "Hello! This page is open";
+    }
 }
