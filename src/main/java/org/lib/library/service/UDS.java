@@ -17,8 +17,7 @@ public class UDS implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Employee> employee = employeeRepo.findByEmail(email);
-
-        return employee.map(UD::new).orElseThrow(() -> new UsernameNotFoundException(email + "not found"));
+        //TODO:
+        return null;
     }
 }
