@@ -1,9 +1,8 @@
 package org.lib.library.security;
 
-import org.lib.library.service.UDS;
+import org.lib.library.service.EmployeeDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
@@ -24,7 +23,7 @@ public class SecurityConfig {
 
     @Bean
     UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        return new UDS();
+        return new EmployeeDetailsService();
     }
 
     @Bean
