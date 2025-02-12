@@ -23,7 +23,10 @@ public class RegistrationEmployeeController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerEmployee(@RequestBody Employee employee) {
-
+    //TODO:переделать логику на сервис!
+        if (employeeRepo == null) {
+            throw new IllegalStateException("EmployeeRepo is null");
+        }
         if(employeeRepo.findByEmail(employee.getEmail()).isPresent()) {  //cannot find symbol:   method getEmail()
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Пользователь с таким email уже зарегистрирован");
         } else {

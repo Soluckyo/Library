@@ -21,6 +21,10 @@ public class EmployeeService {
         employeeRepo.save(employee);
     }
 
+    public void registerAdmin(Employee employee) {
+        employeeRepo.save(employee);
+    }
+
 
 
 
