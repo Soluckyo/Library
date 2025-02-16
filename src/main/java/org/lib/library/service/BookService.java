@@ -47,7 +47,6 @@ public class BookService {
         if(!book.isAvailable()){
             throw new Exception("Эта книга уже выдана");
         }
-
         book.setGuest(guest);
         book.setAvailable(false);
 

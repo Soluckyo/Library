@@ -3,7 +3,6 @@ package org.lib.library.api;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.lib.library.entity.Book;
-import org.lib.library.entity.Employee;
 import org.lib.library.entity.Guest;
 import org.lib.library.service.BookService;
 import org.lib.library.service.EmployeeService;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -28,6 +28,9 @@ public class EmployeeController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @PostMapping("/new_book")
     public Book addBook(@RequestBody Book book) {
@@ -70,9 +73,16 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("allreg")
-    public String allReg() {
-        return "Hello, this page is for registed users only";
+    //TODO: adding new guest
+    @PostMapping("/reg_guest")
+    public ResponseEntity <String> addGuest(@RequestBody Guest guest) {
+
+        if(employeeService.existsByPhone(guest.getPhone())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Гость с таким номером телефона уже существует");
+        } else {
+            employeeService.registerGuest(guest);
+            return ResponseEntity.status(HttpStatus.OK).body("Гость успешно создан");
+        }
     }
 
 

@@ -15,8 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Setter
-@Getter
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -40,6 +39,22 @@ public class Employee{
 
     private boolean isRegistered;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -56,11 +71,19 @@ public class Employee{
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public Library getLibraryId() {
+        return libraryId;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setLibraryId(Library libraryId) {
+        this.libraryId = libraryId;
+    }
+
+    public boolean isRegistered() {
+        return isRegistered;
+    }
+
+    public void setRegistered(boolean registered) {
+        isRegistered = registered;
     }
 }

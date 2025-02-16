@@ -1,7 +1,6 @@
 package org.lib.library.security;
 
 import org.lib.library.service.EmployeeDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,8 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import java.security.Provider;
 
 @EnableWebSecurity
 @Configuration
@@ -37,7 +34,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/employees/new_book").hasRole("EMPLOYEE")
+                        //.requestMatchers("/api/v1/employees/new_book").hasRole("EMPLOYEE")
                         .anyRequest().permitAll()
                         //.requestMatchers("api/v1/employees/**").authenticated()
                 )

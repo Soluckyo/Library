@@ -4,4 +4,5 @@ import org.lib.library.entity.Library;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LibraryRepo extends JpaRepository<Library, Long> {
+    boolean existsByName(String name);
 }
