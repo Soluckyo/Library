@@ -13,8 +13,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -31,4 +29,28 @@ public class Library {
 
     @OneToMany
     private List<Employee> employees;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 }

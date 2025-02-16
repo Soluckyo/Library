@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.lib.library.entity.Book;
 import org.lib.library.entity.Guest;
 import org.lib.library.repository.BookRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookService {
+
+    @Autowired
     private BookRepo bookRepo;
 
     public Book addBook(Book book) {
@@ -26,7 +29,7 @@ public class BookService {
     }
 
     public List<Book> findAll() {
-        return bookRepo.findByIsAvailable(true);
+        return bookRepo.findByIsAvailable(Boolean.TRUE);
     }
 
     public void deleteById(Long id) {

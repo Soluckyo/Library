@@ -13,46 +13,39 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class DataInitializer implements CommandLineRunner {
-
-    Guest guest;
-    BookRepo bookRepo;
-    LibraryRepo libraryRepo;
-    EmployeeRepo employeeRepo;
-    PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public DataInitializer(EmployeeRepo employeeRepo, PasswordEncoder passwordEncoder) {
-        this.employeeRepo = employeeRepo;
-        this.passwordEncoder = passwordEncoder;
-    }
-
+//
+//    Guest guest;
+//    BookRepo bookRepo;
+//    LibraryRepo libraryRepo;
+//    EmployeeRepo employeeRepo;
+//    PasswordEncoder passwordEncoder;
+//
+//    @Autowired
+//    public DataInitializer(EmployeeRepo employeeRepo, PasswordEncoder passwordEncoder, LibraryRepo libraryRepo, BookRepo bookRepo) {
+//        this.employeeRepo = employeeRepo;
+//        this.passwordEncoder = passwordEncoder;
+//        this.libraryRepo = libraryRepo;
+//        this.bookRepo = bookRepo;
+//
+//    }
+//
     @Override
     public void run(String... args) throws Exception {
 
-        Library library = new Library();
-        library.setName("Архангельская научная библиотека им. Н.А. Добролюбова ");
-        library.setAddress("г. Архангельск, ул. Партизанская, д. 2");
-        libraryRepo.save(library);
-
-        Book book = new Book();
-        book.setIsbn("978-5-4461-4117-3");
-        book.setAuthor("Джеймс Клир");
-        book.setName("Атомные привычки");
-        book.setYearOfPublication("2025");
-        book.setAvailable(true);
-        book.setLibraryId(library);
-        bookRepo.save(book);
-
-        Book book1 = new Book();
-        book.setIsbn("978-5-04-101286-1");
-        book.setAuthor("Джон Дакетт");
-        book.setName("HTML и CSS. Разработка и создание веб-сайтов");
-        book.setYearOfPublication("2022");
-        book.setAvailable(true);
-        book.setLibraryId(library);
-        bookRepo.save(book1);
+//        Library library1 = libraryRepo.findById(3L).get();
+//
+//        Book book1 = new Book();
+//        book1.setIsbn("978-5-699-54574-2");
+//        book1.setAuthor("Кэти Сьера и Берт Бейтс");
+//        book1.setName("Изучаем Java. 2-е издание");
+//        book1.setYearOfPublication("2022");
+//        book1.setAvailable(true);
+//        book1.setLibraryId(library1);
+//        bookRepo.save(book1);
 
 
     }

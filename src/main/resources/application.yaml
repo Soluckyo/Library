@@ -8,3 +8,9 @@ spring:
     url: jdbc:postgresql://localhost:5433/LibraryApp
     username: postgres
     password: postgres
+    driver-class-name: org.postgresql.Driver
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
