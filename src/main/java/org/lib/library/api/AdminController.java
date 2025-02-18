@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/admin/")
 @AllArgsConstructor
+@PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
 
     @Autowired
@@ -44,7 +46,6 @@ public class AdminController {
     }
 
     @GetMapping("/pending_employees")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> pendingEmployees() {
         try {
             List<Employee> pendingEmployees = employeeService.getPendingEmployees();
@@ -58,9 +59,7 @@ public class AdminController {
 
     }
 
-    //TODO:approve employee
-    @GetMapping("/approve/{id}")
-   // @PreAuthorize("hasRole('ADMIN')")
+    @PatchMapping("/approve/{id}")
     public ResponseEntity<String> approveEmployee(@PathVariable Long id) {
         try {
             employeeService.approveEmployee(id);
@@ -71,7 +70,6 @@ public class AdminController {
     }
 
     @PostMapping("/reject/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> rejectEmployee(@PathVariable Long id) {
         try{
             employeeService.rejectEmployee(id);
@@ -82,7 +80,6 @@ public class AdminController {
     }
 
     @DeleteMapping("/delete_employee/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.status(HttpStatus.OK).body("Работник успешно удален");
@@ -90,7 +87,6 @@ public class AdminController {
 
 
     @PostMapping("/add_library")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addLibrary(@RequestBody Library library) {
 
         if(employeeService.existByName(library.getName())) {
@@ -102,7 +98,6 @@ public class AdminController {
     }
 
     @DeleteMapping("/delete_library/{idLibrary}")
-    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteLibrary(@PathVariable Long idLibrary) {
 
         employeeService.deleteLibrary(idLibrary);

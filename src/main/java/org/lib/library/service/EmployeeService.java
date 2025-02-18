@@ -50,8 +50,6 @@ public class EmployeeService {
             Employee employee = employeeOpt.get();
             employee.setRole(Role.EMPLOYEE);
             employee.setRegistered(true);
-
-            employeeRepo.save(employee);
         }else throw new Exception("Сотрудник не найден");
     }
 
