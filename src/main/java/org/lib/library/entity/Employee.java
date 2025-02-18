@@ -39,6 +39,14 @@ public class Employee{
 
     private boolean isRegistered;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -85,5 +93,11 @@ public class Employee{
 
     public void setRegistered(boolean registered) {
         isRegistered = registered;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + getId() + ", name=" + getName() + ", role=" + getRole() + ", email=" + getEmail() + "] \n";
+
     }
 }

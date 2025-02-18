@@ -36,6 +36,12 @@ public class Book {
 
     private boolean isAvailable = true;
 
+    @Override
+    public String toString() {
+        return "Book [id=" + id + ", isbn=" + isbn + ", name=" + name + "]";
+    }
+
+
     public boolean isAvailable() {
         return isAvailable;
     }

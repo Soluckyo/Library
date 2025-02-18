@@ -24,9 +24,6 @@ public class Guest {
 
     private String address;
 
-    @ManyToOne
-    private Library libraryID;
-
     public String getName() {
         return name;
     }
@@ -49,13 +46,5 @@ public class Guest {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Library getLibraryID() {
-        return libraryID;
-    }
-
-    public void setLibraryID(Library libraryID) {
-        this.libraryID = libraryID;
     }
 }

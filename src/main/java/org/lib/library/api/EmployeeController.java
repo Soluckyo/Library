@@ -33,8 +33,9 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping("/new_book")
-    public Book addBook(@RequestBody Book book) {
-        return bookService.addBook(book);
+    public ResponseEntity<String> addBook(@RequestBody Book book) {
+        bookService.addBook(book);
+        return ResponseEntity.status(HttpStatus.CREATED).body(book.toString() + "Книга успешно добавлена");
     }
 
     @GetMapping("/book/{bookId}")
@@ -73,7 +74,6 @@ public class EmployeeController {
         }
     }
 
-    //TODO: adding new guest
     @PostMapping("/reg_guest")
     public ResponseEntity <String> addGuest(@RequestBody Guest guest) {
 
