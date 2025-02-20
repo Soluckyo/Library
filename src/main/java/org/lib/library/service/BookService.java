@@ -20,8 +20,8 @@ public class BookService {
     @Autowired
     private BookRepo bookRepo;
 
-    public Book addBook(Book book) {
-        return bookRepo.save(book);
+    public void addBook(Book book) {
+        bookRepo.save(book);
     }
 
     public Book findById(Long id) {
